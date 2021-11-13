@@ -2,17 +2,17 @@ import './Index.css';
 import React from 'react';
 
 class CartItem extends React.Component{
-    constructor() {
-        super();
-        this.state = {
-            price: 999,
-            title: 'Mobile Phone',
-            qty: 1,
-            img: '',
-            some: ''
-        }
-        // this.testing();
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Mobile Phone',
+    //         qty: 1,
+    //         img: '',
+    //         some: ''
+    //     }
+    //     // this.testing();
+    // }
 
     // testing(){
     //     const promise = new Promise((resolve,reject)=>{
@@ -57,7 +57,8 @@ class CartItem extends React.Component{
     }
 render(){
     // console.log('render');
-    const {price, title, qty} = this.state;
+    const {price, title, qty,id} = this.props.product;
+    const {product, onIncreaseQuantity, onDecreaseQuantity, onDeleteProduct} = this.props;
   return (
     <div className="cart-item">
         <div className="left-block">
@@ -73,18 +74,19 @@ render(){
                     src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665629.png?token=exp=1636535986~hmac=65509e2fd6346ca66b116e3911d8c702" 
                     alt="increase" 
                     className="action-icon"
-                    onClick={this.increaseQty}
+                    onClick={() => onIncreaseQuantity(product)}
                 />
                 <img 
                     src="https://cdn-icons.flaticon.com/png/512/1665/premium/1665663.png?token=exp=1636535934~hmac=cd487cac23909148dad5418e114f2ff0" 
                     alt="decrease" 
                     className="action-icon"
-                    onClick={this.decreaseQty}
+                    onClick={() => onDecreaseQuantity(product)}
                 />
                 <img 
                     src="https://cdn-icons.flaticon.com/png/512/484/premium/484662.png?token=exp=1636536018~hmac=7cda7a2a3cca436d6872cb29010e5ea9" 
                     alt="delete"   
                     className="action-icon"
+                    onClick= {() => onDeleteProduct(id)}
                 />
             </div>
         </div>
